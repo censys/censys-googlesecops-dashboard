@@ -1,0 +1,384 @@
+{
+    "dashboards": [
+        {
+            "dashboard": {
+                "name": "44ac6a6c-9fff-4bb7-b39d-4e9fe95e58d2",
+                "displayName": "Censys SOAR Dashboard",
+                "definition": {
+                    "filters": [
+                        {
+                            "id": "GlobalTimeFilter",
+                            "dataSource": "GLOBAL",
+                            "filterOperatorAndFieldValues": [
+                                {
+                                    "filterOperator": "PAST",
+                                    "fieldValues": [
+                                        "1",
+                                        "DAY"
+                                    ]
+                                }
+                            ],
+                            "displayName": "Global Time Filter",
+                            "isStandardTimeRangeFilter": true,
+                            "isStandardTimeRangeFilterEnabled": false
+                        },
+                        {
+                            "id": "9c3c66af-0476-42ea-b336-c8da35d06ae9",
+                            "dataSource": "SOAR_PLAYBOOKS",
+                            "fieldPath": "playbook.create_time",
+                            "filterOperatorAndFieldValues": [
+                                {
+                                    "filterOperator": "PAST",
+                                    "fieldValues": [
+                                        "7",
+                                        "DAY"
+                                    ]
+                                }
+                            ],
+                            "displayName": "Time Filter",
+                            "chartIds": [
+                                "f033b2f5-7337-4a7f-9f06-bb11e871b589",
+                                "6e24fd92-ab64-4a27-971e-5e4558a1d405",
+                                "80fa971c-90f5-4588-bb45-f2e2861620ec",
+                                "368c8c38-db19-4ade-8987-0abe549946be"
+                            ]
+                        }
+                    ],
+                    "charts": [
+                        {
+                            "dashboardChart": "6e24fd92-ab64-4a27-971e-5e4558a1d405",
+                            "chartLayout": {
+                                "startX": 0,
+                                "spanX": 48,
+                                "startY": 0,
+                                "spanY": 15
+                            },
+                            "filtersIds": [
+                                "9c3c66af-0476-42ea-b336-c8da35d06ae9"
+                            ]
+                        },
+                        {
+                            "dashboardChart": "368c8c38-db19-4ade-8987-0abe549946be",
+                            "chartLayout": {
+                                "startX": 48,
+                                "spanX": 48,
+                                "startY": 0,
+                                "spanY": 15
+                            },
+                            "filtersIds": [
+                                "9c3c66af-0476-42ea-b336-c8da35d06ae9"
+                            ]
+                        },
+                        {
+                            "dashboardChart": "80fa971c-90f5-4588-bb45-f2e2861620ec",
+                            "chartLayout": {
+                                "startX": 0,
+                                "spanX": 37,
+                                "startY": 15,
+                                "spanY": 26
+                            },
+                            "filtersIds": [
+                                "9c3c66af-0476-42ea-b336-c8da35d06ae9"
+                            ]
+                        },
+                        {
+                            "dashboardChart": "f033b2f5-7337-4a7f-9f06-bb11e871b589",
+                            "chartLayout": {
+                                "startX": 37,
+                                "spanX": 59,
+                                "startY": 15,
+                                "spanY": 26
+                            },
+                            "filtersIds": [
+                                "9c3c66af-0476-42ea-b336-c8da35d06ae9"
+                            ]
+                        }
+                    ]
+                },
+                "type": "CUSTOM",
+                "etag": "60e80daac8c54640322104a73f7bca807dd293e6f6820d8fea5aac2e0a461b3f",
+                "access": "DASHBOARD_PRIVATE"
+            },
+            "dashboardCharts": [
+                {
+                    "name": "f033b2f5-7337-4a7f-9f06-bb11e871b589",
+                    "displayName": "Most Popular Actions & Playbooks",
+                    "description": "A table listing which of Censys integration's actions are used most and in which specific SOC playbooks.",
+                    "chartDatasource": {
+                        "dashboardQuery": "f6dee837-c631-48f5-a019-ad0bee08a32c",
+                        "dataSources": [
+                            "SOAR_PLAYBOOKS"
+                        ]
+                    },
+                    "visualization": {
+                        "xAxes": [
+                            {
+                                "axisType": "VALUE"
+                            }
+                        ],
+                        "yAxes": [
+                            {
+                                "axisType": "VALUE"
+                            }
+                        ],
+                        "legends": [
+                            {
+                                "legendOrient": "HORIZONTAL"
+                            }
+                        ],
+                        "columnDefs": [
+                            {
+                                "field": "action.action",
+                                "header": "Censys Actions"
+                            },
+                            {
+                                "field": "display_name",
+                                "header": "Playbook Name"
+                            },
+                            {
+                                "field": "Total_Action_Executions",
+                                "header": "Total Action Executions"
+                            }
+                        ],
+                        "groupingType": "Off"
+                    },
+                    "tileType": "TILE_TYPE_VISUALIZATION",
+                    "etag": "4f1242958aff0ffb4528aa5a3838dfa0f516cd4dff36767b0f9de118ae0d1ccd",
+                    "drillDownConfig": {}
+                },
+                {
+                    "name": "6e24fd92-ab64-4a27-971e-5e4558a1d405",
+                    "displayName": "Total Playbook Runs",
+                    "description": "Total count of unique playbook executions that included Censys Actions.",
+                    "chartDatasource": {
+                        "dashboardQuery": "55aaa782-755e-4373-afda-15d5815da7e2",
+                        "dataSources": [
+                            "SOAR_PLAYBOOKS"
+                        ]
+                    },
+                    "visualization": {
+                        "series": [
+                            {
+                                "seriesType": "TEXT",
+                                "label": "Total Playbook Runs",
+                                "field": "Total_Playbook_Runs",
+                                "metricTrendConfig": {
+                                    "metricFormat": "METRIC_FORMAT_PLAIN_TEXT",
+                                    "metricDisplayTrend": "METRIC_DISPLAY_TREND_ABSOLUTE_VALUE",
+                                    "metricTrendType": "METRIC_TREND_TYPE_REGULAR"
+                                }
+                            }
+                        ],
+                        "xAxes": [
+                            {
+                                "axisType": "VALUE"
+                            }
+                        ],
+                        "yAxes": [
+                            {
+                                "axisType": "VALUE"
+                            }
+                        ],
+                        "legends": [
+                            {
+                                "legendOrient": "HORIZONTAL"
+                            }
+                        ],
+                        "groupingType": "Off"
+                    },
+                    "tileType": "TILE_TYPE_VISUALIZATION",
+                    "etag": "944307ddbc6689453aff76f5f21ef49a2842c51196aecdb9ad9eb4d5f6504756",
+                    "drillDownConfig": {}
+                },
+                {
+                    "name": "80fa971c-90f5-4588-bb45-f2e2861620ec",
+                    "displayName": "Playbook Distribution",
+                    "description": "Pie chart showing the distribution of Playbooks using Censys Integration.",
+                    "chartDatasource": {
+                        "dashboardQuery": "54338de6-d178-47b5-9863-cb2e954df3d2",
+                        "dataSources": [
+                            "SOAR_PLAYBOOKS"
+                        ]
+                    },
+                    "visualization": {
+                        "series": [
+                            {
+                                "seriesType": "PIE",
+                                "encode": {
+                                    "value": "Total_Runs",
+                                    "itemName": "display_name"
+                                },
+                                "dataLabel": {
+                                    "show": true
+                                },
+                                "radius": [
+                                    "0%",
+                                    "70%"
+                                ],
+                                "itemStyle": {
+                                    "color": "b=>{const {map:c}=OOf(this.theme);b=JQf(b,nPf(this.form.controls.seriesConfig.getRawValue()),a);a=b.nextColorIndex;let d;return(d=\nc.get(b.color))!=null?d:b.color}"
+                                },
+                                "itemColors": {
+                                    "colors": [
+                                        {
+                                            "key": "Censys - Host History",
+                                            "value": {
+                                                "color": "#145CBD",
+                                                "label": "Censys - Host History"
+                                            }
+                                        },
+                                        {
+                                            "key": "Censys - Entity Enrichment",
+                                            "value": {
+                                                "color": "#BB590B",
+                                                "label": "Censys - Entity Enrichment"
+                                            }
+                                        },
+                                        {
+                                            "key": "Censys - Related Infrastructure",
+                                            "value": {
+                                                "color": "#047B6A",
+                                                "label": "Censys - Related Infrastructure"
+                                            }
+                                        },
+                                        {
+                                            "key": "Censys - Rescan",
+                                            "value": {
+                                                "color": "#CD2A3A",
+                                                "label": "Censys - Rescan"
+                                            }
+                                        },
+                                        {
+                                            "key": "Copy of Censys - Rescan",
+                                            "value": {
+                                                "color": "#B91C74",
+                                                "label": "Copy of Censys - Rescan"
+                                            }
+                                        },
+                                        {
+                                            "key": "Censys Rescan",
+                                            "value": {
+                                                "color": "#7737C6",
+                                                "label": "Censys Rescan"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "xAxes": [
+                            {
+                                "axisType": "VALUE"
+                            }
+                        ],
+                        "yAxes": [
+                            {
+                                "axisType": "VALUE"
+                            }
+                        ],
+                        "legends": [
+                            {
+                                "top": 12,
+                                "legendOrient": "HORIZONTAL"
+                            }
+                        ],
+                        "groupingType": "Off"
+                    },
+                    "tileType": "TILE_TYPE_VISUALIZATION",
+                    "etag": "900e26f06d89a1404bc94274ffa310585b9adb2879cbaca066c5458ee1273fbb",
+                    "drillDownConfig": {}
+                },
+                {
+                    "name": "368c8c38-db19-4ade-8987-0abe549946be",
+                    "displayName": "Total Action Runs (via Playbooks)",
+                    "description": "Total count of all Censys Actions executions.",
+                    "chartDatasource": {
+                        "dashboardQuery": "dbb32264-58bf-4cdb-8105-2d3ba9cbcf1c",
+                        "dataSources": [
+                            "SOAR_PLAYBOOKS"
+                        ]
+                    },
+                    "visualization": {
+                        "series": [
+                            {
+                                "seriesType": "TEXT",
+                                "label": "Total Action Runs",
+                                "field": "Total_Action_Runs",
+                                "metricTrendConfig": {
+                                    "metricFormat": "METRIC_FORMAT_NUMBER",
+                                    "metricDisplayTrend": "METRIC_DISPLAY_TREND_ABSOLUTE_VALUE",
+                                    "metricTrendType": "METRIC_TREND_TYPE_REGULAR"
+                                }
+                            }
+                        ],
+                        "xAxes": [
+                            {
+                                "axisType": "VALUE"
+                            }
+                        ],
+                        "yAxes": [
+                            {
+                                "axisType": "VALUE"
+                            }
+                        ],
+                        "legends": [
+                            {
+                                "legendOrient": "HORIZONTAL"
+                            }
+                        ],
+                        "groupingType": "Off"
+                    },
+                    "tileType": "TILE_TYPE_VISUALIZATION",
+                    "etag": "578ea471f16c7950b9e21011dae91d1abf6cdbd2bfd3b4e01a46482460b9a148",
+                    "drillDownConfig": {}
+                }
+            ],
+            "dashboardQueries": [
+                {
+                    "name": "54338de6-d178-47b5-9863-cb2e954df3d2",
+                    "query": "// Playbook Distribution - Pie chart of playbooks using Censys Integration\r\n$integration = playbook.action.integration \r\n$integration = \"Censys\"\r\n\r\nmatch:\r\n    playbook.display_name\r\noutcome:\r\n    $Total_Runs = count_distinct(playbook.name)\r\norder:\r\n    $Total_Runs desc",
+                    "input": {
+                        "relativeTime": {
+                            "timeUnit": "DAY",
+                            "startTimeVal": "90"
+                        }
+                    },
+                    "etag": "593c3ee974bcc007a21dad67128d8c275606664cc68e28803a95346f4d109273"
+                },
+                {
+                    "name": "dbb32264-58bf-4cdb-8105-2d3ba9cbcf1c",
+                    "query": "$integration = playbook.action.integration \r\n$integration = \"Censys\"\r\noutcome:\r\n    $Total_Action_Runs = count(playbook.action.name)",
+                    "input": {
+                        "relativeTime": {
+                            "timeUnit": "DAY",
+                            "startTimeVal": "90"
+                        }
+                    },
+                    "etag": "f46a97c428cc61c40cae51e540746563da66aac5b8f5124a94a7c4f1ea49d3d6"
+                },
+                {
+                    "name": "f6dee837-c631-48f5-a019-ad0bee08a32c",
+                    "query": "// Shows total usage per action across all playbooks\r\n$integration = playbook.action.integration\r\n$integration = \"Censys\"\r\nmatch:\r\n    playbook.action.action,  playbook.display_name\r\n\r\noutcome:\r\n    $Total_Action_Executions = count(playbook.action.name)\r\n\r\norder:\r\n    $Total_Action_Executions desc\r\n",
+                    "input": {
+                        "relativeTime": {
+                            "timeUnit": "DAY",
+                            "startTimeVal": "90"
+                        }
+                    },
+                    "etag": "99f98fb2c6e9616345b715fd418187cf147958934cfc12e3729bb11cf05d8b2c"
+                },
+                {
+                    "name": "55aaa782-755e-4373-afda-15d5815da7e2",
+                    "query": "$integration = playbook.action.integration\r\n$integration = \"Censys\"\r\n\r\n$playbook_run_id = playbook.name\r\n\r\noutcome:\r\n    $Total_Playbook_Runs = count_distinct($playbook_run_id)",
+                    "input": {
+                        "relativeTime": {
+                            "timeUnit": "DAY",
+                            "startTimeVal": "90"
+                        }
+                    },
+                    "etag": "8f40654813a784faac0133d223730b5d5f9f92c8818748a3e60a2ad5acd2f784"
+                }
+            ]
+        }
+    ]
+}
