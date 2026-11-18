@@ -1,0 +1,763 @@
+{
+    "dashboards": [
+        {
+            "dashboard": {
+                "name": "f334e4c1-b98a-4475-91e8-4dea85bce6b0",
+                "displayName": "Censys - Supplier Risk Overview",
+                "definition": {
+                    "filters": [
+                        {
+                            "id": "GlobalTimeFilter",
+                            "dataSource": "GLOBAL",
+                            "filterOperatorAndFieldValues": [
+                                {
+                                    "filterOperator": "PAST",
+                                    "fieldValues": [
+                                        "1",
+                                        "DAY"
+                                    ]
+                                }
+                            ],
+                            "displayName": "Global Time Filter",
+                            "chartIds": [
+                                "9308b108-e4b4-47f8-98fc-7d24f79e23be",
+                                "f94f8f93-dd30-409b-a279-e9d1a64b9dcf",
+                                "83763069-f653-424b-8334-b27e09341a96",
+                                "f38217ea-e2dc-4aa9-85ca-c7d95dd50e0f",
+                                "e69201ae-9edc-4dab-84c5-f86a2c26f9e1",
+                                "f6554c8b-7950-45df-8dcd-41a13b3bf143"
+                            ],
+                            "isStandardTimeRangeFilter": true,
+                            "isStandardTimeRangeFilterEnabled": true
+                        },
+                        {
+                            "id": "b2619d8e-89ba-4ea6-9c20-7c35e7e1e479",
+                            "dataSource": "GLOBAL",
+                            "displayName": "Severity",
+                            "advancedFilterConfig": {
+                                "token": "severity",
+                                "separator": "|",
+                                "multipleAllowed": true,
+                                "defaultValues": [
+                                    ".*"
+                                ],
+                                "valueSource": {
+                                    "queryOptions": {
+                                        "query": "metadata.log_type = \"CENSYS_SUPPLIER_RISK_CUSTOM\"\r\nmatch:\r\n    security_result.severity",
+                                        "column": "security_result.severity",
+                                        "globalTimeFilterEnabled": true,
+                                        "input": {},
+                                        "dialect": "YL2"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "id": "c313378e-19d9-4520-bfb9-f8901281c5c1",
+                            "dataSource": "GLOBAL",
+                            "displayName": "Risk Category",
+                            "advancedFilterConfig": {
+                                "token": "risk_category",
+                                "separator": "|",
+                                "multipleAllowed": true,
+                                "defaultValues": [
+                                    ".*"
+                                ],
+                                "valueSource": {
+                                    "queryOptions": {
+                                        "query": "metadata.log_type = \"CENSYS_SUPPLIER_RISK_CUSTOM\"\r\nmatch:\r\n    security_result.category_details",
+                                        "column": "security_result.category_details",
+                                        "globalTimeFilterEnabled": true,
+                                        "input": {},
+                                        "dialect": "YL2"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "id": "89f0ad6f-13f9-4037-a65d-dcd99b983118",
+                            "dataSource": "GLOBAL",
+                            "displayName": "Status",
+                            "advancedFilterConfig": {
+                                "token": "status",
+                                "separator": "|",
+                                "multipleAllowed": true,
+                                "defaultValues": [
+                                    ".*"
+                                ],
+                                "valueSource": {
+                                    "queryOptions": {
+                                        "query": "metadata.log_type = \"CENSYS_SUPPLIER_RISK_CUSTOM\"\r\nmatch:\r\n    security_result.detection_fields[\"status\"]",
+                                        "column": "security_result.detection_fields[status]_3125508079_value",
+                                        "globalTimeFilterEnabled": true,
+                                        "input": {},
+                                        "dialect": "YL2"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "id": "4d685a6f-03c5-4a2d-ae3b-086dbb0eade8",
+                            "dataSource": "GLOBAL",
+                            "displayName": "Supplier",
+                            "advancedFilterConfig": {
+                                "token": "supplier",
+                                "separator": "|",
+                                "multipleAllowed": true,
+                                "defaultValues": [
+                                    ".*"
+                                ],
+                                "valueSource": {
+                                    "queryOptions": {
+                                        "query": "metadata.log_type = \"CENSYS_SUPPLIER_RISK_CUSTOM\"\r\nmatch:\r\n    security_result.associations.name",
+                                        "column": "security_result.associations.name",
+                                        "globalTimeFilterEnabled": true,
+                                        "input": {},
+                                        "dialect": "YL2"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "charts": [
+                        {
+                            "dashboardChart": "9308b108-e4b4-47f8-98fc-7d24f79e23be",
+                            "chartLayout": {
+                                "startX": 0,
+                                "spanX": 48,
+                                "startY": 0,
+                                "spanY": 27
+                            },
+                            "filtersIds": [
+                                "GlobalTimeFilter"
+                            ]
+                        },
+                        {
+                            "dashboardChart": "f94f8f93-dd30-409b-a279-e9d1a64b9dcf",
+                            "chartLayout": {
+                                "startX": 0,
+                                "spanX": 96,
+                                "startY": 27,
+                                "spanY": 29
+                            },
+                            "filtersIds": [
+                                "GlobalTimeFilter"
+                            ]
+                        },
+                        {
+                            "dashboardChart": "83763069-f653-424b-8334-b27e09341a96",
+                            "chartLayout": {
+                                "startX": 48,
+                                "spanX": 48,
+                                "startY": 0,
+                                "spanY": 27
+                            },
+                            "filtersIds": [
+                                "GlobalTimeFilter"
+                            ]
+                        },
+                        {
+                            "dashboardChart": "f38217ea-e2dc-4aa9-85ca-c7d95dd50e0f",
+                            "chartLayout": {
+                                "startX": 48,
+                                "spanX": 48,
+                                "startY": 56,
+                                "spanY": 27
+                            },
+                            "filtersIds": [
+                                "GlobalTimeFilter"
+                            ]
+                        },
+                        {
+                            "dashboardChart": "e69201ae-9edc-4dab-84c5-f86a2c26f9e1",
+                            "chartLayout": {
+                                "startX": 0,
+                                "spanX": 48,
+                                "startY": 56,
+                                "spanY": 27
+                            },
+                            "filtersIds": [
+                                "GlobalTimeFilter"
+                            ]
+                        },
+                        {
+                            "dashboardChart": "f6554c8b-7950-45df-8dcd-41a13b3bf143",
+                            "chartLayout": {
+                                "startX": 0,
+                                "spanX": 96,
+                                "startY": 83,
+                                "spanY": 28
+                            },
+                            "filtersIds": [
+                                "GlobalTimeFilter"
+                            ]
+                        }
+                    ]
+                },
+                "type": "CUSTOM",
+                "etag": "11cf9c9bdc444ba0fb4c435961d868577c091882505ed9808b3e95324beac464",
+                "access": "DASHBOARD_PRIVATE"
+            },
+            "dashboardCharts": [
+                {
+                    "name": "83763069-f653-424b-8334-b27e09341a96",
+                    "displayName": "Risk Events by Category",
+                    "description": "Open risk events ranked by risk_category",
+                    "chartDatasource": {
+                        "dashboardQuery": "e0b0a84c-c2e7-4dd9-8242-1cab6f027293",
+                        "dataSources": [
+                            "UDM"
+                        ]
+                    },
+                    "visualization": {
+                        "series": [
+                            {
+                                "seriesType": "PIE",
+                                "encode": {
+                                    "value": "risk_count",
+                                    "itemName": "security_result.category_details"
+                                },
+                                "dataLabel": {
+                                    "show": true
+                                },
+                                "radius": [
+                                    "40%",
+                                    "70%"
+                                ],
+                                "itemStyle": {
+                                    "color": "b=>{var {map:c}=gY(this.theme);b=oze(b,fnf(this.form.controls.seriesConfig.getRawValue()),a);a=b.nextColorIndex;var d;return(d=\nc.get(b.color))!=null?d:b.color}"
+                                },
+                                "itemColors": {
+                                    "colors": [
+                                        {
+                                            "key": "VULNERABILITY",
+                                            "value": {
+                                                "color": "#eb730a",
+                                                "label": "VULNERABILITY"
+                                            }
+                                        },
+                                        {
+                                            "key": "EXPOSURE",
+                                            "value": {
+                                                "color": "#10a3b7",
+                                                "label": "EXPOSURE"
+                                            }
+                                        },
+                                        {
+                                            "key": "MISCONFIGURATION",
+                                            "value": {
+                                                "color": "#1a73e8",
+                                                "label": "MISCONFIGURATION"
+                                            }
+                                        },
+                                        {
+                                            "key": "THREAT",
+                                            "value": {
+                                                "color": "#ec453b",
+                                                "label": "THREAT"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "xAxes": [
+                            {
+                                "axisType": "VALUE"
+                            }
+                        ],
+                        "yAxes": [
+                            {
+                                "axisType": "VALUE"
+                            }
+                        ],
+                        "legends": [
+                            {
+                                "top": 12,
+                                "legendOrient": "HORIZONTAL"
+                            }
+                        ],
+                        "groupingType": "Off"
+                    },
+                    "tileType": "TILE_TYPE_VISUALIZATION",
+                    "etag": "3a556f570b8ae7f210fa035bbb021f365155312cc6fbe5ae9f8c8f05f5702108",
+                    "drillDownConfig": {
+                        "leftDrillDowns": [
+                            {
+                                "id": "4C6011DF-9645-4C10-864C-06C2DEDEB9DC",
+                                "displayName": "Run search on category",
+                                "customSettings": {
+                                    "newTab": true,
+                                    "query": {
+                                        "query": "metadata.log_type = \"CENSYS_SUPPLIER_RISK_CUSTOM\"\r\nsecurity_result.detection_fields[\"status\"] = \"open\"\r\nsecurity_result.category_details = ${security_result.category_details}",
+                                        "dialect": "YL2"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    "tokens": [
+                        "risk_category",
+                        "severity",
+                        "supplier"
+                    ]
+                },
+                {
+                    "name": "f6554c8b-7950-45df-8dcd-41a13b3bf143",
+                    "displayName": "Rapid Response Events",
+                    "description": "Table of events flagged rapid_response: true, surfacing actively-exploited or high-urgency findings",
+                    "chartDatasource": {
+                        "dashboardQuery": "0db63d61-8bcf-44b5-8644-51aa143c7afd",
+                        "dataSources": [
+                            "UDM"
+                        ]
+                    },
+                    "visualization": {
+                        "xAxes": [
+                            {
+                                "axisType": "VALUE"
+                            }
+                        ],
+                        "yAxes": [
+                            {
+                                "axisType": "VALUE"
+                            }
+                        ],
+                        "legends": [
+                            {
+                                "legendOrient": "HORIZONTAL"
+                            }
+                        ],
+                        "columnDefs": [
+                            {
+                                "field": "id",
+                                "header": "id"
+                            },
+                            {
+                                "field": "time",
+                                "header": "time"
+                            },
+                            {
+                                "field": "risk_name",
+                                "header": "risk name"
+                            },
+                            {
+                                "field": "severity_display",
+                                "header": "severity"
+                            },
+                            {
+                                "field": "supplier",
+                                "header": "supplier"
+                            },
+                            {
+                                "field": "platform_url",
+                                "header": "platform url"
+                            }
+                        ],
+                        "groupingType": "Off"
+                    },
+                    "tileType": "TILE_TYPE_VISUALIZATION",
+                    "etag": "e4e4e73571b9d8cbf04b48127f2d5becd507c5b1dc652b498d29ef59f0554120",
+                    "drillDownConfig": {
+                        "leftDrillDowns": [
+                            {
+                                "id": "id",
+                                "displayName": "Run Search on id",
+                                "defaultSettings": {}
+                            },
+                            {
+                                "id": "F0625D84-504E-41A4-A22F-C7C070FDF44F",
+                                "displayName": "Run Search on ID",
+                                "customSettings": {
+                                    "newTab": true,
+                                    "leftClickColumn": "id",
+                                    "query": {
+                                        "query": "metadata.log_type = \"CENSYS_SUPPLIER_RISK_CUSTOM\"\r\nsecurity_result.detection_fields[\"rapid_response\"] = \"true\"\r\nmetadata.product_log_id = ${id}",
+                                        "dialect": "YL2"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    "tokens": [
+                        "risk_category",
+                        "severity",
+                        "status",
+                        "supplier"
+                    ]
+                },
+                {
+                    "name": "e69201ae-9edc-4dab-84c5-f86a2c26f9e1",
+                    "displayName": "Supplier Risk Ranking",
+                    "description": "Suppliers ranked by open risk event count via supplier.display_name",
+                    "chartDatasource": {
+                        "dashboardQuery": "0a371ca6-af6e-4082-b600-ba202aeaf77a",
+                        "dataSources": [
+                            "UDM"
+                        ]
+                    },
+                    "visualization": {
+                        "xAxes": [
+                            {
+                                "axisType": "VALUE"
+                            }
+                        ],
+                        "yAxes": [
+                            {
+                                "axisType": "VALUE"
+                            }
+                        ],
+                        "legends": [
+                            {
+                                "legendOrient": "HORIZONTAL"
+                            }
+                        ],
+                        "columnDefs": [
+                            {
+                                "field": "supplier_display_name",
+                                "header": "supplier"
+                            },
+                            {
+                                "field": "risk_count",
+                                "header": "open risk count"
+                            }
+                        ],
+                        "groupingType": "Off"
+                    },
+                    "tileType": "TILE_TYPE_VISUALIZATION",
+                    "etag": "46cdd5568865170840059cd1cc9d99dbc45bc353f2d9186485726a85df78646a",
+                    "drillDownConfig": {
+                        "leftDrillDowns": [
+                            {
+                                "id": "EB890ACA-EA3F-4806-90FE-1618876C8021",
+                                "displayName": "Run Search on Supplier",
+                                "customSettings": {
+                                    "newTab": true,
+                                    "leftClickColumn": "supplier_display_name",
+                                    "query": {
+                                        "query": "metadata.log_type = \"CENSYS_SUPPLIER_RISK_CUSTOM\"\r\nsecurity_result.detection_fields[\"status\"] = \"open\"\r\nsecurity_result.associations.name = ${supplier_display_name}",
+                                        "dialect": "YL2"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    "tokens": [
+                        "risk_category",
+                        "severity",
+                        "supplier"
+                    ]
+                },
+                {
+                    "name": "9308b108-e4b4-47f8-98fc-7d24f79e23be",
+                    "displayName": "Open Risk Count by Severity",
+                    "description": "Count of risk instances currently open (latest event per risk_instance_id), grouped by severity.",
+                    "chartDatasource": {
+                        "dashboardQuery": "40ac5e73-49a3-44c3-88b3-0fc2c6d4a838",
+                        "dataSources": [
+                            "UDM"
+                        ]
+                    },
+                    "visualization": {
+                        "series": [
+                            {
+                                "seriesType": "PIE",
+                                "encode": {
+                                    "value": "open_risk_count",
+                                    "itemName": "severity"
+                                },
+                                "dataLabel": {
+                                    "show": true
+                                },
+                                "radius": [
+                                    "40%",
+                                    "70%"
+                                ],
+                                "itemStyle": {
+                                    "color": "b=>{var {map:c}=gY(this.theme);b=oze(b,fnf(this.form.controls.seriesConfig.getRawValue()),a);a=b.nextColorIndex;var d;return(d=\nc.get(b.color))!=null?d:b.color}"
+                                },
+                                "itemColors": {
+                                    "colors": [
+                                        {
+                                            "key": "MEDIUM",
+                                            "value": {
+                                                "color": "#1a73e8",
+                                                "label": "MEDIUM"
+                                            }
+                                        },
+                                        {
+                                            "key": "HIGH",
+                                            "value": {
+                                                "color": "#eb730a",
+                                                "label": "HIGH"
+                                            }
+                                        },
+                                        {
+                                            "key": "CRITICAL",
+                                            "value": {
+                                                "color": "#10a3b7",
+                                                "label": "CRITICAL"
+                                            }
+                                        },
+                                        {
+                                            "key": "LOW",
+                                            "value": {
+                                                "color": "#ec453b",
+                                                "label": "LOW"
+                                            }
+                                        },
+                                        {
+                                            "key": "UNKNOWN",
+                                            "value": {
+                                                "color": "#e51f8f",
+                                                "label": "UNKNOWN"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "xAxes": [
+                            {
+                                "axisType": "VALUE"
+                            }
+                        ],
+                        "yAxes": [
+                            {
+                                "axisType": "VALUE"
+                            }
+                        ],
+                        "legends": [
+                            {
+                                "top": 12,
+                                "legendOrient": "HORIZONTAL"
+                            }
+                        ],
+                        "groupingType": "Off"
+                    },
+                    "tileType": "TILE_TYPE_VISUALIZATION",
+                    "etag": "da0affbdba9abe45259f074c934aaaf3afbc97d8048b4b82264b0afdcf794cbe",
+                    "drillDownConfig": {},
+                    "tokens": [
+                        "risk_category",
+                        "severity",
+                        "supplier"
+                    ]
+                },
+                {
+                    "name": "f94f8f93-dd30-409b-a279-e9d1a64b9dcf",
+                    "displayName": "Open vs. Closed Risks",
+                    "description": "Count of open vs close risk events over the selected time range",
+                    "chartDatasource": {
+                        "dashboardQuery": "606bc96e-affd-4871-8738-0ad287c6e578",
+                        "dataSources": [
+                            "UDM"
+                        ]
+                    },
+                    "visualization": {
+                        "series": [
+                            {
+                                "seriesName": "open",
+                                "seriesType": "LINE",
+                                "encode": {
+                                    "x": "time_bucket",
+                                    "y": "risk_count"
+                                },
+                                "dataLabel": {},
+                                "itemStyle": {
+                                    "color": "#1a73e8"
+                                },
+                                "seriesUniqueValue": "open"
+                            },
+                            {
+                                "seriesName": "closed",
+                                "seriesType": "LINE",
+                                "encode": {
+                                    "x": "time_bucket",
+                                    "y": "risk_count"
+                                },
+                                "dataLabel": {},
+                                "itemStyle": {
+                                    "color": "#eb730a"
+                                },
+                                "seriesUniqueValue": "closed"
+                            }
+                        ],
+                        "xAxes": [
+                            {
+                                "axisType": "CATEGORY",
+                                "displayName": "Time"
+                            }
+                        ],
+                        "yAxes": [
+                            {
+                                "axisType": "VALUE",
+                                "displayName": "Risk Count"
+                            }
+                        ],
+                        "legends": [
+                            {
+                                "top": 12,
+                                "legendOrient": "HORIZONTAL"
+                            }
+                        ],
+                        "seriesColumn": [
+                            "status"
+                        ],
+                        "groupingType": "Grouped"
+                    },
+                    "tileType": "TILE_TYPE_VISUALIZATION",
+                    "etag": "33b71c00c513d780111679e7dc3a8cb7c0be45ee2e507f75e19531b09c712a9d",
+                    "drillDownConfig": {},
+                    "tokens": [
+                        "risk_category",
+                        "severity",
+                        "status",
+                        "supplier"
+                    ]
+                },
+                {
+                    "name": "f38217ea-e2dc-4aa9-85ca-c7d95dd50e0f",
+                    "displayName": "Top 20 Risks by Open Risk Count",
+                    "description": "CVE-keyed risk_type_id values ranked by count of open risk events referencing them.",
+                    "chartDatasource": {
+                        "dashboardQuery": "e72bee5b-1725-4aea-974d-74940880de37",
+                        "dataSources": [
+                            "UDM"
+                        ]
+                    },
+                    "visualization": {
+                        "xAxes": [
+                            {
+                                "axisType": "VALUE"
+                            }
+                        ],
+                        "yAxes": [
+                            {
+                                "axisType": "VALUE"
+                            }
+                        ],
+                        "legends": [
+                            {
+                                "legendOrient": "HORIZONTAL"
+                            }
+                        ],
+                        "columnDefs": [
+                            {
+                                "field": "risk_name",
+                                "header": "risk name"
+                            },
+                            {
+                                "field": "risk_count",
+                                "header": "Open risk count"
+                            }
+                        ],
+                        "groupingType": "Off"
+                    },
+                    "tileType": "TILE_TYPE_VISUALIZATION",
+                    "etag": "a51c772133d2a6e503a54dc9d1b9ae5f5775cfaebe86e9aba126c1c56dbf40f9",
+                    "drillDownConfig": {
+                        "leftDrillDowns": [
+                            {
+                                "id": "risk_name",
+                                "displayName": "Run Search on risk name",
+                                "defaultSettings": {}
+                            },
+                            {
+                                "id": "AAF66B4C-1F3F-4169-9AF1-5F33B99F8F7B",
+                                "displayName": "Run search on risk name",
+                                "customSettings": {
+                                    "newTab": true,
+                                    "leftClickColumn": "risk_name",
+                                    "query": {
+                                        "query": "metadata.log_type = \"CENSYS_SUPPLIER_RISK_CUSTOM\"\r\nsecurity_result.detection_fields[\"status\"] = \"open\"\r\nsecurity_result.threat_name = ${risk_name}",
+                                        "dialect": "YL2"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    "tokens": [
+                        "risk_category",
+                        "severity",
+                        "supplier"
+                    ]
+                }
+            ],
+            "dashboardQueries": [
+                {
+                    "name": "e0b0a84c-c2e7-4dd9-8242-1cab6f027293",
+                    "query": "metadata.log_type = \"CENSYS_SUPPLIER_RISK_CUSTOM\"\r\n$status = security_result.detection_fields[\"status\"]\r\n$status = \"open\"\r\n$severity = if(security_result.severity = \"CRITICAL\", \"CRITICAL\", if(security_result.severity = \"HIGH\", \"HIGH\", if(security_result.severity = \"MEDIUM\", \"MEDIUM\", if(security_result.severity = \"LOW\", \"LOW\", if(security_result.severity = \"INFORMATIONAL\", \"INFORMATIONAL\", \"UNKNOWN\")))))\r\n$severity = /$severity$/ nocase\r\nsecurity_result.category_details = /$risk_category$/ nocase\r\nsecurity_result.associations.name = /$supplier$/ nocase\r\nmatch:\r\n  security_result.category_details\r\noutcome:\r\n  $risk_count = count_distinct(security_result.threat_id)\r\norder:\r\n  $risk_count desc",
+                    "input": {
+                        "relativeTime": {
+                            "timeUnit": "DAY",
+                            "startTimeVal": "1"
+                        }
+                    },
+                    "etag": "c1b7383ebd573baee42263d4f1626c90e7056068b11f4cbe62896c9482f254cd",
+                    "dialect": "YL2"
+                },
+                {
+                    "name": "0db63d61-8bcf-44b5-8644-51aa143c7afd",
+                    "query": "metadata.log_type = \"CENSYS_SUPPLIER_RISK_CUSTOM\"\r\nsecurity_result.detection_fields[\"rapid_response\"] = \"true\"\r\n$id = metadata.product_log_id\r\n$severity = if(security_result.severity = \"CRITICAL\", \"CRITICAL\", if(security_result.severity = \"HIGH\", \"HIGH\", if(security_result.severity = \"MEDIUM\", \"MEDIUM\", if(security_result.severity = \"LOW\", \"LOW\", if(security_result.severity = \"INFORMATIONAL\", \"INFORMATIONAL\", \"UNKNOWN\")))))\r\n$severity = /$severity$/ nocase\r\nsecurity_result.category_details = /$risk_category$/ nocase\r\nsecurity_result.detection_fields[\"status\"] = /$status$/ nocase\r\nsecurity_result.associations.name = /$supplier$/ nocase\r\nmatch:\r\n    $id\r\noutcome:\r\n    $time = array_distinct(timestamp.get_timestamp(metadata.collected_timestamp.seconds))\r\n    $risk_name = array_distinct(security_result.threat_name)\r\n    $severity_display = array_distinct($severity)\r\n    $supplier = array_distinct(security_result.associations.name)\r\n    $platform_url = array_distinct(metadata.url_back_to_product)\r\norder:\r\n    $time desc\r\nlimit:\r\n    1000",
+                    "input": {
+                        "relativeTime": {
+                            "timeUnit": "DAY",
+                            "startTimeVal": "1"
+                        }
+                    },
+                    "etag": "54a18db560ef2c0cbf0f978f6b56f780b5cf582c9dbb624d45135ef261bbd850",
+                    "dialect": "YL2"
+                },
+                {
+                    "name": "0a371ca6-af6e-4082-b600-ba202aeaf77a",
+                    "query": "metadata.log_type = \"CENSYS_SUPPLIER_RISK_CUSTOM\"\r\nsecurity_result.detection_fields[\"status\"] = \"open\"\r\n$supplier_display_name = security_result.associations.name\r\n$severity = if(security_result.severity = \"CRITICAL\", \"CRITICAL\", if(security_result.severity = \"HIGH\", \"HIGH\", if(security_result.severity = \"MEDIUM\", \"MEDIUM\", if(security_result.severity = \"LOW\", \"LOW\", if(security_result.severity = \"INFORMATIONAL\", \"INFORMATIONAL\", \"UNKNOWN\")))))\r\n$severity = /$severity$/ nocase\r\nsecurity_result.category_details = /$risk_category$/ nocase\r\n$supplier_display_name = /$supplier$/ nocase\r\nmatch:\r\n  $supplier_display_name\r\noutcome:\r\n  $risk_count = count_distinct(security_result.threat_id)\r\norder:\r\n  $risk_count desc\r\nlimit:\r\n  1000",
+                    "input": {
+                        "relativeTime": {
+                            "timeUnit": "DAY",
+                            "startTimeVal": "1"
+                        }
+                    },
+                    "etag": "5e740fe6acae0c6daeef136cc48574e44ca60645486277bee61f4f73484b4062",
+                    "dialect": "YL2"
+                },
+                {
+                    "name": "40ac5e73-49a3-44c3-88b3-0fc2c6d4a838",
+                    "query": "stage latest_risk {\r\n  metadata.log_type = \"CENSYS_SUPPLIER_RISK_CUSTOM\"\r\n  $risk_instance_id = security_result.threat_id\r\n  $risk_instance_id != \"\"\r\n  $ts = metadata.event_timestamp.seconds\r\n  $severity = if(security_result.severity = \"CRITICAL\", \"CRITICAL\", if(security_result.severity = \"HIGH\", \"HIGH\", if(security_result.severity = \"MEDIUM\", \"MEDIUM\", if(security_result.severity = \"LOW\", \"LOW\", if(security_result.severity = \"INFORMATIONAL\", \"INFORMATIONAL\", \"UNKNOWN\")))))\r\n  $severity = /$severity$/ nocase\r\n  security_result.category_details = /$risk_category$/ nocase\r\n  security_result.associations.name = /$supplier$/ nocase\r\n    match:\r\n    $risk_instance_id\r\n  outcome:\r\n    $latest_status = window.last($ts, security_result.detection_fields[\"status\"])\r\n    $latest_severity = window.last($ts,\r\n      if(security_result.severity = \"CRITICAL\", \"CRITICAL\",\r\n      if(security_result.severity = \"HIGH\", \"HIGH\",\r\n      if(security_result.severity = \"MEDIUM\", \"MEDIUM\",\r\n      if(security_result.severity = \"LOW\", \"LOW\",\r\n      if(security_result.severity = \"INFORMATIONAL\", \"INFORMATIONAL\", \"UNKNOWN\"))))))\r\n}\r\n\r\n$latest_risk.latest_status = \"open\"\r\n$severity = $latest_risk.latest_severity\r\nmatch:\r\n  $severity\r\noutcome:\r\n  $open_risk_count = count_distinct($latest_risk.risk_instance_id)\r\norder:\r\n  $open_risk_count desc",
+                    "input": {
+                        "relativeTime": {
+                            "timeUnit": "DAY",
+                            "startTimeVal": "1"
+                        }
+                    },
+                    "etag": "79ea3bbcb3716cbff3a3cec7e1fe39298907341695ddd9bc294b9fab66bce5ce",
+                    "dialect": "YL2"
+                },
+                {
+                    "name": "606bc96e-affd-4871-8738-0ad287c6e578",
+                    "query": "metadata.log_type = \"CENSYS_SUPPLIER_RISK_CUSTOM\"\r\n$status = security_result.detection_fields[\"status\"]\r\n$status = \"open\" or $status = \"closed\"\r\n$time_bucket = timestamp.get_timestamp(metadata.event_timestamp.seconds, \"%Y-%m-%d : %H\")\r\n$severity = if(security_result.severity = \"CRITICAL\", \"CRITICAL\", if(security_result.severity = \"HIGH\", \"HIGH\", if(security_result.severity = \"MEDIUM\", \"MEDIUM\", if(security_result.severity = \"LOW\", \"LOW\", if(security_result.severity = \"INFORMATIONAL\", \"INFORMATIONAL\", \"UNKNOWN\")))))\r\n$severity = /$severity$/ nocase\r\nsecurity_result.category_details = /$risk_category$/ nocase\r\n$status = /$status$/ nocase\r\nsecurity_result.associations.name = /$supplier$/ nocase\r\nmatch:\r\n  $time_bucket, $status\r\noutcome:\r\n  $risk_count = count_distinct(security_result.threat_id)\r\norder:\r\n  $time_bucket",
+                    "input": {
+                        "relativeTime": {
+                            "timeUnit": "DAY",
+                            "startTimeVal": "1"
+                        }
+                    },
+                    "etag": "d1c732432b93a4c113fa494239b6e93007fe7e0c2051879cfd552a46bed2615d",
+                    "dialect": "YL2"
+                },
+                {
+                    "name": "e72bee5b-1725-4aea-974d-74940880de37",
+                    "query": "metadata.log_type = \"CENSYS_SUPPLIER_RISK_CUSTOM\"\r\nsecurity_result.detection_fields[\"status\"] = \"open\"\r\n$risk_name = security_result.threat_name\r\n$severity = if(security_result.severity = \"CRITICAL\", \"CRITICAL\", if(security_result.severity = \"HIGH\", \"HIGH\", if(security_result.severity = \"MEDIUM\", \"MEDIUM\", if(security_result.severity = \"LOW\", \"LOW\", if(security_result.severity = \"INFORMATIONAL\", \"INFORMATIONAL\", \"UNKNOWN\")))))\r\n$severity = /$severity$/ nocase\r\nsecurity_result.category_details = /$risk_category$/ nocase\r\nsecurity_result.associations.name = /$supplier$/ nocase\r\nmatch:\r\n  $risk_name\r\noutcome:\r\n  $risk_count = count_distinct(security_result.threat_id)\r\norder:\r\n  $risk_count desc\r\nlimit:\r\n  20",
+                    "input": {
+                        "relativeTime": {
+                            "timeUnit": "DAY",
+                            "startTimeVal": "1"
+                        }
+                    },
+                    "etag": "154c3c9a7678e55c2a827c99816c293b0ea719ead51a4b2c88c17266f24146f1",
+                    "dialect": "YL2"
+                }
+            ]
+        }
+    ]
+}
