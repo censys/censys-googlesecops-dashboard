@@ -1,0 +1,44 @@
+rule censys_sr_open_high_critical_risk {
+  meta:
+    author = "Censys"
+    description = "Detection will be generated for a supplier risk instance that is opened or reopened (status open) with HIGH or CRITICAL severity, grouped by risk instance ID."
+    severity = "High"
+    priority = "High"
+    rule_name = "Censys SR - Open High/Critical Supplier Risk"
+    product = "Censys Supplier Risk"
+    rule_version = "1.0"
+
+  events:
+    $event.metadata.log_type = "CENSYS_SUPPLIER_RISK_CUSTOM"
+    $event.security_result.detection_fields["status"] = "open"
+    (
+      $event.security_result.detection_fields["change_type"] = "opened" or
+      $event.security_result.detection_fields["change_type"] = "reopened"
+    )
+    (
+      $event.security_result.severity = "CRITICAL" or
+      $event.security_result.severity = "HIGH"
+    )
+    $risk_instance_id = $event.security_result.threat_id
+    $risk_instance_id != ""
+
+  match:
+    $risk_instance_id over 24h
+
+  outcome:
+    $risk_score = max(if($event.security_result.severity = "CRITICAL", 90, 70))
+    $total_events = count($event.metadata.product_log_id) // events for this risk instance in the window
+    $change_type = array_distinct($event.security_result.detection_fields["change_type"])
+    $censys_severity = array_distinct($event.security_result.severity)
+    $risk_name = array_distinct($event.security_result.threat_name)
+    $risk_type_id = array_distinct($event.security_result.rule_id)
+    $risk_category = array_distinct($event.security_result.category_details)
+    $supplier_name = array_distinct($event.security_result.associations.name)
+    $supplier_id = array_distinct($event.security_result.associations.id)
+    $target_ip = array_distinct($event.target.ip)
+    $target_hostname = array_distinct($event.target.hostname)
+    $platform_url = array_distinct($event.metadata.url_back_to_product)
+
+  condition:
+    $event
+}
